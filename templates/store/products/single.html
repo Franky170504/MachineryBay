@@ -1,0 +1,131 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}
+{{ product.name }}
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #bdc3c7;
+        color: #333;
+    }
+
+    .logo h2{
+        color: black;
+    }
+
+    .links a {
+        color: black;
+    }
+
+    .product-detail-container {
+        margin-top: 100px;
+        width: 100%;
+        max-width: 1200px;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+
+    .product-detail-container .top-section {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .product-image {
+        flex: 1;
+    }
+
+    .product-image img {
+        width: 100%;
+        max-width: 500px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .product-info {
+        flex: 2;
+        padding: 10px;
+    }
+
+    .product-name {
+        font-size: 30px;
+        font-family: 'Roboto';
+        font-weight: 500;
+        color:black;
+    }
+
+    .product-description {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .product-actions {
+        margin-top: 20px;
+    }
+
+    .product-actions button {
+        margin-right: 10px;
+    }
+
+    .btn:hover {
+        background-color: #005f73;
+    }
+
+    .product-rating {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+</style>
+
+<div class="product-detail-container">
+    <!-- Top Section -->
+    <div class="top-section">
+        <div class="product-image">
+            <img alt="Responsive image" src="{{ product.image.url }}"> 
+        </div>
+        <div class="product-info">
+            <h1 class="product-name">{{ product.title }}</h1>
+            
+            <h2><p class="product-description">
+                {{product.description}}
+            </p>
+            </h2>
+            <div class="product-actions">
+                <!-- Pass the redirection URL dynamically using data-url -->
+                <button type="button" class="signin-btn" data-url="{{ product.inquiry_url }}">
+                    Inquiry
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle the button click to redirect to the specified URL
+    document.querySelectorAll('.signin-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            // Get the dynamic URL from the data-url attribute
+            const url = this.getAttribute('data-url');
+            
+            // Redirect to the specified URL
+            if (url) {
+                window.location.href = url;
+            } else {
+                alert('No URL provided for this product.');
+            }
+        });
+    });
+</script>
+
+{% endblock %}
