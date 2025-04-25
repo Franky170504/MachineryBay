@@ -7,6 +7,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+class SubCategory(models.Model):
+    name = models.CharField(max_length=50)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default= 1)
+
+    def __str__(self):
+        return self.name
+    
 class Customers(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -20,6 +27,7 @@ class Customers(models.Model):
 class Products(models.Model):
     name = models.CharField(max_length=50)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default= 1)
+    sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE, default= 1)
     description = models.CharField(max_length=500)
     image = models.ImageField(upload_to='uploads/products/')
 
