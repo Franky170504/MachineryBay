@@ -1,7 +1,15 @@
 from django.db import models
 import datetime
 
+class Company(models.Model):
+    company_id = models.IntegerField
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+    
 class Category(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -9,6 +17,7 @@ class Category(models.Model):
     
 class SubCategory(models.Model):
     name = models.CharField(max_length=50)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default= 1)
 
     def __str__(self):
@@ -26,6 +35,7 @@ class Customers(models.Model):
     
 class Products(models.Model):
     name = models.CharField(max_length=50)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default= 1)
     sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE, default= 1)
     description = models.CharField(max_length=500)
