@@ -7,6 +7,8 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name_plural = "companies"
     
 class Category(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
@@ -15,6 +17,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+    class Meta:
+        verbose_name_plural = "categories"
+
 class SubCategory(models.Model):
     name = models.CharField(max_length=50)
     company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
@@ -22,6 +27,9 @@ class SubCategory(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name_plural = "Sub Categories"
     
 class Customers(models.Model):
     first_name = models.CharField(max_length=50)
@@ -32,6 +40,9 @@ class Customers(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+    
+    class Meta:
+        verbose_name_plural = "customers"
     
 class Products(models.Model):
     name = models.CharField(max_length=50)
@@ -44,4 +55,5 @@ class Products(models.Model):
     def __str__(self):
         return self.name
     
-
+    class Meta:
+        verbose_name_plural = "products"
