@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Marketplace - Industrial Equipment Trading Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .landing-background {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .logo-text {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .content-box {
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+        }
+    </style>
+</head>
+<body class="landing-background flex flex-col justify-between min-h-screen text-white">
+    <!-- Logo Header -->
+    <header class="container mx-auto pt-8 px-4">
+        <div class="flex items-center">
+            <img src="/api/placeholder/60/60" alt="MachineMarket Logo" class="h-14 w-14">
+            <span class="ml-4 text-3xl font-bold logo-text">MachineMarket</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 flex items-center justify-center flex-grow">
+        <div class="max-w-3xl content-box p-8 rounded-lg text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Industrial Machinery Marketplace</h1>
+            
+            <p class="text-xl md:text-2xl mb-10 text-gray-200">
+                The global platform for buying and selling industrial equipment. Connect with verified businesses worldwide.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#" class="bg-blue-600 text-white px-10 py-4 rounded-md text-lg font-medium hover:bg-blue-700 transition btn-glow">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                <a href="#" class="bg-white text-blue-800 px-10 py-4 rounded-md text-lg font-medium hover:bg-gray-100 transition">
+                    <i class="fas fa-user-plus mr-2"></i> Register
+                </a>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <span class="block text-3xl font-bold text-blue-400 mb-1">10,000+</span>
+                    <span class="text-gray-300 text-sm">Active Listings</span>
+                </div>
+                <div>
+                    <span class="block text-3xl font-bold text-blue-400 mb-1">5,000+</span>
+                    <span class="text-gray-300 text-sm">Verified Companies</span>
+                </div>
+                <div>
+                    <span class="block text-3xl font-bold text-blue-400 mb-1">120+</span>
+                    <span class="text-gray-300 text-sm">Countries</span>
+                </div>
+                <div>
+                    <span class="block text-3xl font-bold text-blue-400 mb-1">$250M+</span>
+                    <span class="text-gray-300 text-sm">Monthly Volume</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                <p>&copy; 2025 MachineMarket. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
