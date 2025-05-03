@@ -2,6 +2,7 @@ from django.db import models
 import datetime
 
 class Company(models.Model):
+    company_id = models.IntegerField
     name = models.CharField(max_length=50)
 
     def __str__(self):
