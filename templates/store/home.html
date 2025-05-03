@@ -3,9 +3,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Machine Marketplace - Buy and Sell Industrial Equipment</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+    </style>
 </head>
-<body>
-    Home
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/api/placeholder/40/40" alt="Logo" class="h-10 w-10">
+                <span class="ml-3 text-2xl font-bold text-blue-800">MachineMarket</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="font-medium text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#" class="font-medium text-gray-700 hover:text-blue-600">Categories</a>
+                <a href="#" class="font-medium text-gray-700 hover:text-blue-600">How It Works</a>
+                <a href="#" class="font-medium text-gray-700 hover:text-blue-600">About Us</a>
+                <a href="#" class="font-medium text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="font-medium text-gray-700 hover:text-blue-600">Login</a>
+                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Register</a>
+                <button class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Your Marketplace for Industrial Machinery</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Buy, sell, and trade industrial equipment with thousands of verified businesses worldwide.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition w-64">Start Selling</a>
+                <a href="#" class="bg-white text-blue-800 px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-100 transition w-64">Browse Machines</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="bg-white py-10 shadow-md relative -mt-10 rounded-t-lg max-w-5xl mx-auto">
+        <div class="container mx-auto px-4">
+            <form class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="w-full md:w-1/3">
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="cnc">CNC Machines</option>
+                        <option value="printing">Printing Equipment</option>
+                        <option value="packaging">Packaging Machines</option>
+                        <option value="construction">Construction Equipment</option>
+                        <option value="agricultural">Agricultural Machinery</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <input type="text" placeholder="Search by keyword..." class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="w-full md:w-1/3">
+                    <button type="submit" class="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition">Search Machines</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Browse by Category</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="category-card bg-white rounded-lg shadow-md overflow-hidden transition">
+                    <img src="/api/placeholder/400/300" alt="CNC Machines" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CNC Machines</h3>
+                        <p class="text-gray-600 mb-4">Lathes, mills, routers, and more from top manufacturers.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-blue-800">View 2,453 listings <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="category-card bg-white rounded-lg shadow-md overflow-hidden transition">
+                    <img src="/api/placeholder/400/300" alt="Printing Equipment" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Printing Equipment</h3>
+                        <p class="text-gray-600 mb-4">Digital printers, offset presses, and bindery machines.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-blue-800">View 1,872 listings <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="category-card bg-white rounded-lg shadow-md overflow-hidden transition">
+                    <img src="/api/placeholder/400/300" alt="Packaging Machines" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Packaging Machines</h3>
+                        <p class="text-gray-600 mb-4">Filling, sealing, labeling, and wrapping equipment.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-blue-800">View 1,584 listings <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-white border border-blue-600 text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition">View All Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">How It Works</h2>
+            <p class="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">Our marketplace makes buying and selling industrial machinery simple, secure, and efficient.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-list text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. List Your Machine</h3>
+                    <p class="text-gray-600">Create a detailed listing with photos, specifications, and pricing. It's free to list!</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-comments text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. Connect with Buyers</h3>
+                    <p class="text-gray-600">Receive inquiries through our secure messaging system from interested buyers worldwide.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. Close the Deal</h3>
+                    <p class="text-gray-600">Negotiate terms, arrange shipping, and complete the transaction with our secure payment system.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Listings -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Listings</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Listing 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="CNC Machine" class="w-full h-48 object-cover">
+                        <span class="absolute top-0 right-0 bg-green-500 text-white px-3 py-1 m-2 rounded-md text-sm">Verified</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2">HAAS VF-2 CNC Vertical Mill</h3>
+                        <p class="text-gray-600 text-sm mb-3">Year: 2018 | Location: Chicago, USA</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">$42,500</span>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Listing 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Printing Press" class="w-full h-48 object-cover">
+                        <span class="absolute top-0 right-0 bg-green-500 text-white px-3 py-1 m-2 rounded-md text-sm">Verified</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2">Heidelberg Speedmaster 74</h3>
+                        <p class="text-gray-600 text-sm mb-3">Year: 2015 | Location: Berlin, Germany</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">€78,900</span>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Listing 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Packaging Machine" class="w-full h-48 object-cover">
+                        <span class="absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 m-2 rounded-md text-sm">New</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2">Bosch Vertical Form Fill Seal</h3>
+                        <p class="text-gray-600 text-sm mb-3">Year: 2022 | Location: Shanghai, China</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">$64,750</span>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Listing 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Construction Equipment" class="w-full h-48 object-cover">
+                        <span class="absolute top-0 right-0 bg-yellow-500 text-white px-3 py-1 m-2 rounded-md text-sm">Used</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2">Caterpillar 336E Excavator</h3>
+                        <p class="text-gray-600 text-sm mb-3">Year: 2019 | Location: Sydney, Australia</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">AUD 215,000</span>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition">View All Listings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Users Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-blue-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/60/60" alt="User" class="w-12 h-12 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold">John Smithson</h4>
+                            <p class="text-blue-300 text-sm">Precision Manufacturing, Inc.</p>
+                        </div>
+                    </div>
+                    <p class="italic">"We sold our used CNC machine in just 3 days! The process was smooth, and we received multiple qualified inquiries."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/60/60" alt="User" class="w-12 h-12 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Maria Rodriguez</h4>
+                            <p class="text-blue-300 text-sm">Global Print Solutions</p>
+                        </div>
+                    </div>
+                    <p class="italic">"MachineMarket helped us find exactly the printing press we needed at 30% below our budget. The seller verification gave us confidence."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/60/60" alt="User" class="w-12 h-12 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold">Robert Chen</h4>
+                            <p class="text-blue-300 text-sm">Pacific Equipment Trading</p>
+                        </div>
+                    </div>
+                    <p class="italic">"As a dealer, we've increased our international sales by 45% since joining MachineMarket. The platform connects us with serious buyers."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Buy or Sell Industrial Machinery?</h2>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">Join thousands of manufacturers, dealers, and buyers from around the world on MachineMarket.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition w-64">Create Free Account</a>
+                <a href="#" class="bg-gray-200 text-gray-800 px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-300 transition w-64">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <span class="block text-4xl font-bold text-blue-600 mb-2">10,000+</span>
+                    <span class="text-gray-600">Active Listings</span>
+                </div>
+                <div>
+                    <span class="block text-4xl font-bold text-blue-600 mb-2">5,000+</span>
+                    <span class="text-gray-600">Verified Companies</span>
+                </div>
+                <div>
+                    <span class="block text-4xl font-bold text-blue-600 mb-2">120+</span>
+                    <span class="text-gray-600">Countries</span>
+                </div>
+                <div>
+                    <span class="block text-4xl font-bold text-blue-600 mb-2">$250M+</span>
+                    <span class="text-gray-600">Monthly Trading Volume</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">MachineMarket</h3>
+                    <p class="text-gray-400 mb-4">The global marketplace for buying and selling industrial machinery and equipment.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Browse Machines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sell Equipment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">How It Works</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">CNC Machines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Printing Equipment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Packaging Machines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Construction Equipment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Agricultural Machinery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Information</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 mt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 MachineMarket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            const navMenu = document.querySelector('div.hidden.md\\:flex');
+            
+            if (mobileMenuButton && navMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    if (navMenu.classList.contains('hidden')) {
+                        navMenu.classList.remove('hidden');
+                        navMenu.classList.add('flex', 'flex-col', 'absolute', 'top-16', 'left-0', 'right-0', 'bg-white', 'shadow-md', 'z-50', 'p-4', 'space-y-4');
+                    } else {
+                        navMenu.classList.add('hidden');
+                        navMenu.classList.remove('flex', 'flex-col', 'absolute', 'top-16', 'left-0', 'right-0', 'bg-white', 'shadow-md', 'z-50', 'p-4', 'space-y-4');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
