@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Company, Category, SubCategory, Customers, Products
+from .models import Company, Category, SubCategory, Products
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
@@ -16,12 +16,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class SubCategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'company', 'category']
     list_filter = ['company', 'category']
-
-
-@admin.register(Customers)
-class CustomersAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name']
-
 
 @admin.register(Products)
 class ProductsAdmin(admin.ModelAdmin):

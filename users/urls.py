@@ -12,5 +12,7 @@ router.register(r'customer-history', views.CustomerHistoryViewSet, basename='cus
 
 # The API URLs are determined automatically by the router
 urlpatterns = [
+    path('register/', views.customer_register, name='customer_register'),
+    path('register/success/', views.registration_success, name='registration_success'),
     path('', include(router.urls)),
 ]
