@@ -64,7 +64,7 @@
         <div class="w-full max-w-2xl content-box p-8 rounded-lg">
             <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center">Customer Registration</h1>
             
-            <form id="registration-form" method="post" action="{% url 'customer_register' %}" class="space-y-6">
+            <!-- <form id="registration-form" method="post" action="{% url 'accounts/register.html' %}" class="space-y-6"> -->
                 {% csrf_token %}
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -7,7 +7,4 @@ class UsersConfig(AppConfig):
     verbose_name = 'Customer Management'
     
     def ready(self):
-        """
-        Import signals when Django starts.
-        """
         import users.signals  # noqa
