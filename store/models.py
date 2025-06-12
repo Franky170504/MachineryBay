@@ -1,47 +1,27 @@
 from django.db import models
-import datetime
+from customers.models import Customer
 
-class Company(models.Model):
-    company_id = models.IntegerField
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name_plural = "companies"
-    
-class Category(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
-    name = models.CharField(max_length=50)
+class ProductCategory(models.Model):
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
-    
-    class Meta:
-        verbose_name_plural = "categories"
 
-class SubCategory(models.Model):
-    name = models.CharField(max_length=50)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default= 1)
+class ProductCompany(models.Model):
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
-    
-    class Meta:
-        verbose_name_plural = "Sub Categories"
-    
 
-class Products(models.Model):
-    name = models.CharField(max_length=50)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, default= 1)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default= 1)
-    sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE, default= 1)
-    description = models.CharField(max_length=500)
-    image = models.ImageField(upload_to='uploads/products/')
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+    company = models.ForeignKey(ProductCompany, on_delete=models.CASCADE)
+    customers = models.ManyToManyField(Customer, blank=True, related_name='purchased_products')
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.PositiveIntegerField(default=0)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
-    
-    class Meta:
-        verbose_name_plural = "products"

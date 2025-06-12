@@ -7,4 +7,4 @@ class UsersConfig(AppConfig):
     verbose_name = 'Customer Management'
     
     def ready(self):
-        import users.signals  # noqa
+        import customers.signals  # noqa
