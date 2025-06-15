@@ -18,7 +18,7 @@ def register_user(request):
             return redirect('store:product_list')
     else:
         form = UserRegistrationForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'users/signup.html', {'form': form})
 
 def login_user(request):
     if request.method == 'POST':

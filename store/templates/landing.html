@@ -10,8 +10,8 @@
             <nav>
                 <div class="logo">Machinery Bay</div>
                 <div class="nav-buttons">
-                    <a href="#" class="btn btn-secondary">Login</a>
-                    <a href="#" class="btn btn-primary">Sign Up</a>
+                    <a href="{% url "users:login" %}" class="btn btn-secondary">Login</a>
+                    <a href="{% url "users:signup" %}" class="btn btn-primary">Sign Up</a>
                 </div>
             </nav>
         </div>
@@ -75,9 +75,9 @@
                     <button type="submit" class="btn btn-primary-cta">Subscribe</button>
                 </form>
                 <div class="payment-icons">
-                    <img class="payment-icon" src="media\images\mastercard.png" alt="mastercard">
-                    <img class="payment-icon" src="media\images\visa.png" alt="visa">
-                    <img class="payment-icon" src="media\images\paypal.png" alt="paypal">
+                    <img src="media\images\mastercard.png" alt="mastercard">
+                    <img src="media\images\visa.png" alt="visa">
+                    <img src="media\images\paypal.png" alt="paypal">
                 </div>
             </div>
         </section>
