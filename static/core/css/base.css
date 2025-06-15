@@ -380,16 +380,18 @@ footer {
 .payment-icons {
     display: flex;
     gap: 1rem;
-    align-items: center;
     margin-top: 1rem;
 }
 
 .payment-icon {
-    padding: 0.5rem 1rem;
+    width: 40px;
+    height: 40px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .footer-bottom {
