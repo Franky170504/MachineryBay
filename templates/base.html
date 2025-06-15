@@ -3,96 +3,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>{% block title %}Machinery Bay{% endblock %}</title>
-</head>
-<body>
-
-    <header>
-
-        <div class="home-navbar">
-            <a href="/" class="logo">
-            <h2 style="color: white">Machinery Bay</h2>
-            <ul class="links">
-                <li><a href=#>About</a></li>
-                {% comment %} <li><a href="/">Products</a></li> {% endcomment %}
-                <li><a href="#">Resources</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact Us</a></li>  
-            </ul>
-
-            <div class="nav-end">
-                </div>
-                <div class="signup-btn">
-                    <a href="#" class="signup">
-                        Sign up <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>         
-        </div>
-</header>
-
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    
     <!-- Content Block -->
     {% block content %}
     {% endblock %}
 
     <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h2>Machinery Bay</h2>
-                <h3>Machinery Bay provides top-of-the-line CNC machines with precision engineering and customer support that stands out.</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#">Home</a>
+                    <a href="#">Latest Products</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">FAQs</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Support</h3>
+                    <a href="#">Help Center</a>
+                    <a href="#">Shipping Policy</a>
+                    <a href="#">Return & Exchange Policy</a>
+                    <a href="#">Warranty</a>
+                    <a href="#">Track Order</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p>Machinery Bay provides top-of-the-line CNC machines with precision engineering and customer support that stands out.</p>
+                    <div class="social-icons">
+                        <div class="social-icon">📘</div>
+                        <div class="social-icon">💼</div>
+                        <div class="social-icon">📷</div>
+                        <div class="social-icon">🐦</div>
+                    </div>
                 </div>
             </div>
-    
-            <div class="footer-column">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Latest Products</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQs</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Machinery Bay. All Rights Reserved. | <a href="#" style="color: #4ecdc4;">Terms & Conditions</a> | <a href="#" style="color: #4ecdc4;">Privacy Policy</a></p>
             </div>
-    
-            <div class="footer-column">
-                <h4>Customer Support</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Shipping Policy</a></li>
-                    <li><a href="#">Return & Exchange Policy</a></li>
-                    <li><a href="#">Warranty</a></li>
-                    <li><a href="#">Track Order</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-    
-            <div class="footer-column">
-                <h4>Newsletter</h4>
-                <p>Subscribe for the latest updates on CNC machines and industry news.</p>
-                <form action="#">
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit">Subscribe</button>
-                </form>
-                <div class="payment-icons">
-                    <img src="static\media\images\visa.png" alt="Visa">
-                    <img src="static\media\images\mastercard.png" alt="MasterCard">
-                    <img src="static\media\images\paypal.png" alt="PayPal">
-                </div>
-            </div>
-        </div>
-    
-        <div class="footer-bottom">
-            <p>© 2024 Machinery Bay. All Rights Reserved. <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
         </div>
     </footer>
 
-<script src="{% static 'core/js/script.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
-</html>
+</html>    
