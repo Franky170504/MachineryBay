@@ -264,7 +264,7 @@ input[type="password"] {
                         <label for="id_password">{{ form.password.label }}</label>
                         <div class="password-container">
                             {{ form.password }}
-                            <button type="button" class="password-toggle" onclick="togglePassword()">👁️</button>
+                            <button type="button" class="password-toggle" onclick="togglePassword()">👁</button>
                         </div>
                         {% if form.password.errors %}
                             <div class="error-message">
@@ -306,7 +306,7 @@ input[type="password"] {
                         <span>🔗</span> Google
                     </button>
                     <button type="button" class="social-btn" onclick="socialLogin('linkedin')">
-                        <span>💼</span> LinkedIn
+                        <img src="media\images\linkedin.png" alt="LinkedIn">
                     </button>
                 </div>
 
@@ -325,7 +325,7 @@ input[type="password"] {
         
         if (usernameField) {
             usernameField.className = 'form-input';
-            usernameField.placeholder = 'Enter your email or username';
+            usernameField.placeholder = 'Enter your username';
             usernameField.type = 'email';
         }
         
@@ -384,10 +384,10 @@ input[type="password"] {
         
         if (input.type === 'password') {
             input.type = 'text';
-            button.textContent = '🙈';
+            button.textContent = '◡';
         } else {
             input.type = 'password';
-            button.textContent = '👁️';
+            button.textContent = '👁';
         }
     }
 
