@@ -19,6 +19,7 @@ def register_user(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'users/signup.html', {'form': form})
+   
 
 def login_user(request):
     if request.method == 'POST':
