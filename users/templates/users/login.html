@@ -1,51 +1,66 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 <style>
-   body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Inter', sans-serif;
-    background: #0f2027;
-    color: white;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.login-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-    padding: 2rem;
-}
+    .login-page {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #ffffff;
+        min-height: 100vh;
+        overflow-x: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+        position: relative;
+    }
 
-.animated-bg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
-    animation: move-bg 10s ease infinite;
-    z-index: 0;
-}
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    }
 
-@keyframes move-bg {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+    .animated-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 30% 70%, rgba(119, 191, 198, 0.4) 0%, transparent 50%),
+            radial-gradient(circle at 70% 30%, rgba(207, 255, 119, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(205, 78, 86, 0.2) 0%, transparent 50%);
+        animation: float 25s ease-in-out infinite;
+    }
 
-.login-container {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 500px;
-    margin: 2rem;
-}
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-30px) rotate(120deg); }
+        66% { transform: translateY(-15px) rotate(240deg); }
+    }
 
-.login-card {
+    .login-container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 500px;
+        margin: 2rem;
+    }
+
+    .login-card {
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(25px);
         border: 1px solid rgba(255, 255, 255, 0.2);
@@ -54,8 +69,9 @@
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
         position: relative;
         overflow: hidden;
-}
-.signup-card::before {
+    }
+
+    .login-card::before {
         content: '';
         position: absolute;
         top: 0;
@@ -66,11 +82,16 @@
         transition: left 0.6s ease;
     }
 
-    .signup-card:hover::before {
+    .login-card:hover::before {
         left: 100%;
     }
 
-.logo h1 {
+    .logo {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .logo h1 {
         font-size: 2.5rem;
         font-weight: 800;
         background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
@@ -81,131 +102,276 @@
         margin-bottom: 0.5rem;
     }
 
+    @keyframes gradient-shift {
+        0%, 100% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(90deg); }
+    }
 
-.logo p {
+    .logo p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .welcome-text {
         text-align: center;
         margin-bottom: 2rem;
-}
+    }
 
-.welcome-text {
-    margin-top: 1.5rem;
-}
+    .welcome-text h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(45deg, #ffffff, #4ecdc4);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-.form-group {
-    margin-top: 1rem;
-}
+    .welcome-text p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+    }
 
-input, label {
-    display: block;
-    width: 100%;
-}
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
 
-input[type="text"],
-input[type="password"] {
-    padding: 0.8rem;
-    border: none;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 0.4rem;
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-}
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
 
-.password-container {
-    position: relative;
-}
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
 
-.password-toggle {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
+    .form-input {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
 
-.submit-btn {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    width: 100%;
-    background-color: #00b894;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
+    /* Override Django form widget styles */
+    .form-control, input[type="text"], input[type="email"], input[type="password"], 
+    input[type="tel"], input[type="date"], select, textarea {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
 
-.submit-btn:hover {
-    background-color: #019875;
-}
+    .form-input::placeholder, .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
 
-.error-message {
-    color: #ff7675;
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
-}
+    .form-input:focus, .form-control:focus, input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #4ecdc4;
+        box-shadow: 0 0 25px rgba(78, 205, 196, 0.4);
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
 
-.divider {
-    text-align: center;
-    margin: 2rem 0 1rem;
-    font-size: 0.9rem;
-    color: #bbb;
-}
+    .password-container {
+        position: relative;
+    }
 
-.social-btn {
-    width: 100%;
-    padding: 0.7rem;
-    margin-bottom: 1rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid #555;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
+    .password-toggle {
+        position: absolute;
+        right: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
 
-.signup-link {
-    text-align: center;
-    margin-top: 1rem;
-}
+    .password-toggle:hover {
+        color: #4ecdc4;
+        transform: translateY(-50%) scale(1.1);
+    }
 
-.back-home {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    z-index: 100;
-}
+    .error-messages {
+        color: #ff6b6b;
+        font-size: 0.85rem;
+        margin-top: 0.3rem;
+        padding: 0.5rem;
+        background: rgba(255, 107, 107, 0.1);
+        border-radius: 8px;
+        border-left: 3px solid #ff6b6b;
+    }
 
-.back-btn {
-    padding: 0.8rem 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+    .submit-btn {
+        width: 100%;
+        padding: 1.2rem 2rem;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border: none;
+        border-radius: 15px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        margin-bottom: 1.5rem;
+    }
 
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(-5px);
-    color: white;
-}
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+    }
 
+    .submit-btn:active {
+        transform: translateY(-1px);
+    }
+
+    .signup-link {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+    }
+
+    .signup-link a {
+        color: #4ecdc4;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .signup-link a:hover {
+        color: #ff6b6b;
+        text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+    }
+
+    .back-home {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 100;
+    }
+
+    .back-btn {
+        padding: 0.8rem 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .back-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(-5px);
+        color: white;
+    }
+
+    .strength-meter {
+        margin-top: 0.5rem;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .strength-fill {
+        height: 100%;
+        width: 0%;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .strength-text {
+        font-size: 0.8rem;
+        margin-top: 0.3rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Handle Django form field arrangement */
+    .django-form-field {
+        margin-bottom: 1.2rem;
+    }
+
+    .django-form-field.half-width {
+        width: calc(50% - 0.5rem);
+        display: inline-block;
+        margin-right: 1rem;
+    }
+
+    .django-form-field.half-width:nth-child(even) {
+        margin-right: 0;
+    }
+
+    @media (max-width: 768px) {
+        .login-container {
+            margin: 1rem;
+        }
+        
+        .login-card {
+            padding: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+        }
+        
+        .welcome-text h2 {
+            font-size: 1.5rem;
+        }
+        
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        
+        .django-form-field.half-width {
+            width: 100%;
+            margin-right: 0;
+            display: block;
+        }
+        
+        .back-home {
+            top: 1rem;
+            left: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .form-input, .form-control, input, select, textarea {
+            padding: 0.9rem 1rem;
+        }
+        
+        .submit-btn {
+            padding: 1rem 1.5rem;
+        }
+    }
 </style>
-
 
 <div class="login-page">
         <div class="animated-bg"></div>
@@ -296,19 +462,19 @@ input[type="password"] {
                         <input type="hidden" name="next" value="{{ next }}">
                     {% endif %}
                 </form>
-
+<!-- 
                 <div class="divider">
                     <span>or continue with</span>
                 </div>
 
                 <div class="social-login">
                     <button type="button" class="social-btn" onclick="socialLogin('google')">
-                        <span>🔗</span> Google
+                        <img src="{% static 'core/media/images/google.png' %}" alt="Google">Google
                     </button>
                     <button type="button" class="social-btn" onclick="socialLogin('linkedin')">
-                        <img src="media\images\linkedin.png" alt="LinkedIn">
+                        <img src="{% static 'core/media/images/linkedin.png' %}" alt="LinkedIn">LinkedIn
                     </button>
-                </div>
+                </div> -->
 
                 <div class="signup-link">
                     Don't have an account? <a href="{% url 'users:signup' %}">Create Account</a>

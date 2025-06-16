@@ -40,8 +40,8 @@
         right: 0;
         bottom: 0;
         background: 
-            radial-gradient(circle at 30% 70%, rgba(120, 119, 198, 0.4) 0%, transparent 50%),
-            radial-gradient(circle at 70% 30%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 30% 70%, rgba(208, 60, 60, 0.4) 0%, transparent 50%),
+            radial-gradient(circle at 70% 30%, rgba(4, 58, 195, 0.3) 0%, transparent 50%),
             radial-gradient(circle at 50% 50%, rgba(78, 205, 196, 0.2) 0%, transparent 50%);
         animation: float 25s ease-in-out infinite;
     }
@@ -416,7 +416,7 @@
                             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                             <div class="password-container">
                                 {{ field }}
-                                <button type="button" class="password-toggle" onclick="togglePassword('{{ field.id_for_label }}')">👁️</button>
+                                <button type="button" class="password-toggle" onclick="togglePassword('{{ field.id_for_label }}')">👁</button>
                             </div>
                             <div class="strength-meter">
                                 <div class="strength-fill" id="strengthFill"></div>
@@ -534,10 +534,10 @@
         
         if (input.type === 'password') {
             input.type = 'text';
-            button.textContent = '🙈';
+            button.textContent = '◡';
         } else {
             input.type = 'password';
-            button.textContent = '👁️';
+            button.textContent = '👁';
         }
     }
 </script>

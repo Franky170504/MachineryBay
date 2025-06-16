@@ -300,16 +300,16 @@ nav {
     overflow: hidden;
 }
 
-.btn-primary {
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+.btn-primary1 {
+    background: linear-gradient(45deg, #ff6b6b, #4e5dcd);
     color: white;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
-.btn-secondary {
-    background: transparent;
+.btn-primary2 {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
     color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
 .btn:hover {
@@ -317,7 +317,7 @@ nav {
     box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
 }
 
-.btn-secondary:hover {
+.btn-primary2:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.6);
 }
@@ -368,14 +368,14 @@ nav {
     transition: all 0.4s ease;
 }
 
-.btn-primary-cta {
+.btn-primary1-cta {
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
     border: none;
     color: white;
     box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
 }
 
-.btn-primary-cta:hover {
+.btn-primary1-cta:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
 }
