@@ -15,7 +15,7 @@ def register_user(request):
             )
             user.save()
             login(request, user)
-            return redirect('store:product_list')
+            return redirect('users:login')
     else:
         form = UserRegistrationForm()
     return render(request, 'users/signup.html', {'form': form})
