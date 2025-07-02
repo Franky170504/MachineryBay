@@ -140,6 +140,45 @@ nav {
     margin-right: auto;
 }
 
+.btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary1 {
+    background: linear-gradient(45deg, #ff6b6b, #1ba178);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn-primary2 {
+    background: linear-gradient(45deg, #f7074b, #4e59cd);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary1:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+.btn-primary2:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
 .cta-buttons {
     display: flex;
     gap: 1.5rem;
@@ -406,4 +445,27 @@ footer {
     .email-input {
         min-width: 100%;
     }
+}
+
+.user-actions {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;  /* pushes to the right */
+    gap: 20px;                  /* spacing between name and button */
+    margin-right: 20px;         /* optional spacing from the right edge */
+}
+
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
 }

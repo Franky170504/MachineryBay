@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .models import User
 from .forms import UserRegistrationForm
@@ -31,3 +31,7 @@ def login_user(request):
     else:
         form = AuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
+
+def logout_user(request):
+    logout(request)
+    return redirect('store:landing')

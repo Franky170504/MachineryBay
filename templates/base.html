@@ -3,8 +3,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+ <body>
+
+{% block header %}
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">Machinery Bay</div>
+            {% if user.is_authenticated %}
+            <div class="user-actions">
+                <span>{{ user.first_name }},</span>
+                <a href="{% url 'users:logout' %}" class="btn logout-btn">Logout</a>
+            </div>
+            {% else %}
+            <div class="nav-buttons">
+                <a href="{% url 'users:login' %}" class="btn btn-primary1">Login</a>
+                <a href="{% url 'users:signup' %}" class="btn btn-primary2">Sign Up</a>
+            </div>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+{% endblock %}
+
 <!-- Content Block -->
 {% block content %}
 {% endblock %}
