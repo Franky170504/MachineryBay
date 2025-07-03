@@ -12,10 +12,33 @@
         <nav>
             <div class="logo padding:0;">Machinery Bay</div>
             {% if user.is_authenticated %}
-            <div class="user-actions">
-                <span>{{ user.first_name }},</span>
-                <a href="{% url 'users:logout' %}" class="btn logout-btn">Logout</a>
-            </div>
+             <div class="user-menu">
+                    <div class="username" onclick="toggleDropdown()">
+                        <span class="username-text">{{ user.get_full_name|default:user.username }}</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="dropdown-menu" id="userDropdown">
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">👤</span>
+                            <span>View Profile</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">⚙️</span>
+                            <span>Account Settings</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span class="dropdown-icon">❤️</span>
+                            <span>Favorites</span>
+                        </a>
+                        <form method="post" action="{% url 'users:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item logout-btn" onclick="return confirm('Are you sure you want to logout?')">
+                                <span class="dropdown-icon">🚪</span>
+                                <span>Logout</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             {% else %}
             <div class="nav-buttons">
                 <a href="{% url 'users:login' %}" class="btn btn-primary1">Login</a>
@@ -68,6 +91,6 @@
     </div>
 </footer>
 
-<script src="{% static 'core/js/script.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>    
