@@ -1,4 +1,500 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        min-height: 100vh;
+        line-height: 1.6;
+        color: #ffffff;
+        overflow-x: hidden;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, #4CAF50, #8BC34A);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        color: #4CAF50;
+    }
+
+    .search-container {
+        position: relative;
+        width: 300px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-input:focus {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+
+    .main-content {
+        padding: 2rem;
+    }
+
+    .welcome-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: white;
+    }
+
+    .cta-button {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+    }
+
+    /* Store Container */
+    .store-container {
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        min-height: 80vh;
+        margin: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-title {
+        text-align: left;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #052b9f;
+        font-weight: 600;
+    }
+
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: flex-start;
+    }
+
+    .product-card {
+        background-color: white;
+        border-radius: 12px;
+        padding: 20px;
+        width: 250px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .fixed-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        opacity: 0.8;
+        color: white;
+    }
+
+    .product-name {
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 10px;
+        color: #333;
+    }
+
+    .product-company,
+    .product-category {
+        font-size: 14px;
+        color: #666;
+        margin: 4px 0;
+    }
+
+    .btn-pro {
+        display: inline-block;
+        padding: 6px 16px;
+        background-color: #052b9f;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .btn-pro:hover {
+        background-color: #041f75;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .header {
+            padding: 1rem;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .stats {
+            grid-template-columns: repeat(2, 1fr);
+            padding: 2rem 1rem;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Search Bar */
+    .search-container {
+        position: center;
+        margin: 0 2rem;
+    }
+
+    .search-input {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        padding: 0.8rem 1.5rem;
+        color: white;
+        width: 300px;
+        font-size: 1rem;
+    }
+
+    .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: #4ecdc4;
+        box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.2);
+    }
+    
+</style>
+
+<body>
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li><a href="{% url 'store:landing' %}">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#deals">Deals</a></li>
+            <li><a href="#support">Support</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search products...">
+        </div>
+    </nav>
+
+    <h1 class="welcome-title">Welcome to Machinery Bay</h1>
+
+    <!-- Store Section -->
+    <div class="store-container" id="products">
+        
+        <div class="product-grid">
+            <!-- Sample Product 1 -->
+            <div class="product-card">
+                <div class="fixed-image">🏭</div>
+                <h3 class="product-name">CNC Lathe Machine</h3>
+                <p class="product-company">Haas Automation</p>
+                <p class="product-category">Machinery</p>
+                <a href="#" class="btn-pro">View Details</a>
+            </div>
+
+            <!-- Sample Product 2 -->
+            <div class="product-card">
+                <div class="fixed-image">⚙️</div>
+                <h3 class="product-name">Vertical Milling Machine</h3>
+                <p class="product-company">Mazak Corp</p>
+                <p class="product-category">Milling</p>
+                <a href="#" class="btn-pro">View Details</a>
+            </div>
+
+            <!-- Sample Product 3 -->
+            <div class="product-card">
+                <div class="fixed-image">🔧</div>
+                <h3 class="product-name">Hydraulic Press</h3>
+                <p class="product-company">Enerpac</p>
+                <p class="product-category">Hydraulics</p>
+                <a href="#" class="btn-pro">View Details</a>
+            </div>
+
+            <!-- Sample Product 4 -->
+            <div class="product-card">
+                <div class="fixed-image">⚡</div>
+                <h3 class="product-name">Welding Machine</h3>
+                <p class="product-company">Lincoln Electric</p>
+                <p class="product-category">Welding</p>
+                <a href="#" class="btn-pro">View Details</a>
+            </div>
+
+            <!-- Sample Product 5 -->
+            <div class="product-card">
+                <div class="fixed-image">🛠️</div>
+                <h3 class="product-name">Drilling Machine</h3>
+                <p class="product-company">Makita</p>
+                <p class="product-category">Drilling</p>
+                <a href="#" class="btn-pro">View Details</a>
+            </div>
+
+            <!-- Sample Product 6 -->
+            <div class="product-card">
+                <div class="fixed-image">🔩</div>
+                <h3 class="product-name">Grinding Machine</h3>
+                <p class="product-company">Norton Abrasives</p>
+                <p class="product-category">Grinding</p>
+                <a href="#" class="btn-pro">View Details</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+// Add smooth scrolling and interactive elements
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth hover effects for cards
+    const cards = document.querySelectorAll('.feature-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Form submission handler
+    const form = document.querySelector('.email-form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('.email-input').value;
+        if (email) {
+            alert('Thank you for subscribing! 🚀');
+            this.querySelector('.email-input').value = '';
+        }
+    });
+
+    // Add floating animation to feature icons
+    const icons = document.querySelectorAll('.feature-icon');
+    icons.forEach((icon, index) => {
+        icon.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
+    });
+
+    // Parallax effect for background
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const bg = document.querySelector('.animated-bg');
+        bg.style.transform = `translateY(${scrolled * 0.5}px)`;
+    });
+
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Button ripple effect
+    const buttons = document.querySelectorAll('.btn-pro');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // Add intersection observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for scroll animations
+    const animateElements = document.querySelectorAll('.feature-card, .stat-item, .newsletter-section');
+    animateElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+
+    // Stats counter animation
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const animateCounter = (element, target) => {
+        const increment = target / 100;
+        let current = 0;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target;
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current);
+            }
+        }, 20);
+    };
+
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumbers = entry.target.querySelectorAll('.stat-number');
+                statNumbers.forEach(stat => {
+                    const text = stat.textContent;
+                    const number = parseInt(text.replace(/\D/g, ''));
+                    if (number) {
+                        stat.textContent = '0';
+                        setTimeout(() => {
+                            animateCounter(stat, number);
+                        }, 200);
+                    }
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+
+    // Add dynamic cursor effect
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Interactive elements cursor effects
+    const interactiveElements = document.querySelectorAll('button, a, .feature-card');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(1.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+        });
+    });
+});
+</script>
+
 {% endblock %}

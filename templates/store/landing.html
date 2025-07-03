@@ -2,10 +2,46 @@
 {% load static %}
 {% block content %}
 
+<style>
 
-<body>
+.btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.btn-cta {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.4s ease;
+}
+
+.btn-primary-cta {
+    background: linear-gradient(45deg,rgba(213, 107, 255, 0.65), #4ecdc4);
+    border: none;
+    color: white;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+}
+
+</style>
+
 <div class="animated-bg"></div>
-
 <main>
     <section class="hero">
         <div class="container">
@@ -13,7 +49,7 @@
             <p>Your one-stop destination for cutting-edge CNC machines with unmatched precision engineering and world-class customer support that stands out from the competition.</p>
             
             <div class="cta-buttons">
-                <a href="{% url 'store:product_list' %}" class="btn btn-cta btn-primary-cta">Explore Machines</a>
+                    <a href="{% url 'store:product_list' %}" class="btn btn-cta btn-primary-cta">Explore Machines</a>
             </div>
 
             <div class="stats-section">
@@ -71,5 +107,4 @@
         </div>
     </section>
 </main>
-</body>
 {% endblock %}
