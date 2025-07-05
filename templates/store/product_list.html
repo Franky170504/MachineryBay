@@ -6,7 +6,6 @@
     * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
     }
 
     body {
@@ -88,6 +87,34 @@
         transform: scale(1.05);
     }
 
+    .category-filter select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color:rgb(30, 63, 116); 
+        color: white;
+        font-size: 16px;
+        padding: 10px 14px;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .category-filter option {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        color:rgb(255, 255, 255);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.125rem;
+        width: 100%;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
     .main-content {
         padding: 2rem;
     }
@@ -118,7 +145,6 @@
         box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
     }
 
-    /* Store Container */
     .store-container {
         padding: 40px;
         background: rgba(255, 255, 255, 0.1);
@@ -274,10 +300,22 @@
     <h1 class="welcome-title">Welcome to Machinery Bay</h1>
 
     <!-- Store Section -->
-    <div class="store-container" id="products">
-        
+    
+        <div class="store-container" id="products">
+            <form method="get" class="category-filter" style="margin-bottom: 20px;">
+            <label for="category" style="color: white;">Filter by Category:</label>
+            <select name="category" id="category" onchange="this.form.submit()">
+                <option value="">All Categories</option>
+                {% for category in categories %}
+                    <option value="{{ category.name }}" {% if selected_category == category.name %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+
         <div class="product-grid">
-            <!-- Sample Product 1 -->
+            <!--Product 1 -->
             <div class="product-card">
                 <div class="fixed-image">🏭</div>
                 <h3 class="product-name">CNC Lathe Machine</h3>
@@ -286,7 +324,7 @@
                 <a href="#" class="btn-pro">View Details</a>
             </div>
 
-            <!-- Sample Product 2 -->
+            <!-- Product 2 -->
             <div class="product-card">
                 <div class="fixed-image">⚙️</div>
                 <h3 class="product-name">Vertical Milling Machine</h3>

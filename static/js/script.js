@@ -158,42 +158,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 function toggleDropdown() {
-            const dropdown = document.getElementById('userDropdown');
-            const username = document.querySelector('.username');
-            
-            dropdown.classList.toggle('show');
-            username.classList.toggle('active');
+    const dropdown = document.getElementById('userDropdown');
+    const username = document.querySelector('.username');
+    
+    dropdown.classList.toggle('show');
+    username.classList.toggle('active');
+}
+
+function handleLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+        // Add logout logic here
+        alert('Logging out...');
+        // Redirect to login page or refresh
+    }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const userMenu = document.querySelector('.user-menu');
+    const dropdown = document.getElementById('userDropdown');
+    const username = document.querySelector('.username');
+    
+    if (!userMenu.contains(event.target)) {
+        dropdown.classList.remove('show');
+        username.classList.remove('active');
+    }
+});
+
+// Handle dropdown item clicks
+document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href !== '#logout') {
+            e.preventDefault();
+            console.log('Navigating to:', href);
+            // Add navigation logic here
         }
-
-        function handleLogout() {
-            if (confirm('Are you sure you want to logout?')) {
-                // Add logout logic here
-                alert('Logging out...');
-                // Redirect to login page or refresh
-            }
-        }
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            const userMenu = document.querySelector('.user-menu');
-            const dropdown = document.getElementById('userDropdown');
-            const username = document.querySelector('.username');
-            
-            if (!userMenu.contains(event.target)) {
-                dropdown.classList.remove('show');
-                username.classList.remove('active');
-            }
-        });
-
-        // Handle dropdown item clicks
-        document.querySelectorAll('.dropdown-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#logout') {
-                    e.preventDefault();
-                    console.log('Navigating to:', href);
-                    // Add navigation logic here
-                }
-            });
-        });
+    });
+});

@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Product, ProductCategory, ProductCompany
+from .models import Product, Category, Company
 
-@admin.register(ProductCategory)
+@admin.register(Category)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
 
-@admin.register(ProductCompany)
+@admin.register(Company)
 class ProductCompanyAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)

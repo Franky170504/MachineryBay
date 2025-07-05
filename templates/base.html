@@ -19,21 +19,17 @@
                     </div>
                     <div class="dropdown-menu" id="userDropdown">
                         <a href="#" class="dropdown-item">
-                            <span class="dropdown-icon">👤</span>
                             <span>View Profile</span>
                         </a>
                         <a href="#" class="dropdown-item">
-                            <span class="dropdown-icon">⚙️</span>
                             <span>Account Settings</span>
                         </a>
                         <a href="#" class="dropdown-item">
-                            <span class="dropdown-icon">❤️</span>
                             <span>Favorites</span>
                         </a>
                         <form method="post" action="{% url 'users:logout' %}">
                             {% csrf_token %}
                             <button type="submit" class="dropdown-item logout-btn" onclick="return confirm('Are you sure you want to logout?')">
-                                <span class="dropdown-icon">🚪</span>
                                 <span>Logout</span>
                             </button>
                         </form>
@@ -78,10 +74,10 @@
                 <h3>Connect With Us</h3>
                 <p>Machinery Bay provides top-of-the-line CNC machines with precision engineering and customer support that stands out.</p>
                 <div class="social-icons">
-                <img src="{% static 'core/media/images/x.png' %}" alt="X">
-                <img src="{% static 'core/media/images/instagram.png' %}" alt="Instagram">
-                <img src="{% static 'core/media/images/facebook.png' %}" alt="Facebook">
-                <img src="{% static 'core/media/images/linkedin.png' %}" alt="LinkedIn">
+                <img src="{% static 'media/images/x.png' %}" alt="X">
+                <img src="{% static 'media/images/instagram.png' %}" alt="Instagram">
+                <img src="{% static 'media/images/facebook.png' %}" alt="Facebook">
+                <img src="{% static 'media/images/linkedin.png' %}" alt="LinkedIn">
                 </div>
             </div>
         </div>
